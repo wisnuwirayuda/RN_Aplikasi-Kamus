@@ -69,6 +69,12 @@ class Home extends Component {
           keyExtractor={item => item.id}
           renderItem={({item, index}) => (
             <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate('Detail', {
+                  judul: item.judul,
+                  deskripsi: item.deskripsi,
+                })
+              }
               style={{
                 marginVertical: 10,
                 marginHorizontal: 20,
