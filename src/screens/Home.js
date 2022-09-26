@@ -19,18 +19,49 @@ class Home extends Component {
         {id: 1, judul: 'Apel', deskripsi: 'Apel adalah sebuah buah'},
         {id: 2, judul: 'Jeruk', deskripsi: 'Jeruk adalah sebuah buah'},
         {id: 3, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
-        {id: 4, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
-        {id: 5, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
-        {id: 6, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
-        {id: 7, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
-        {id: 8, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
-        {id: 9, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
-        {id: 10, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
-        {id: 11, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
+        {id: 4, judul: 'Alpukat', deskripsi: 'Alpukat adalah sebuah buah'},
+        {id: 5, judul: 'Nanas', deskripsi: 'Nanas adalah sebuah buah'},
+        {id: 6, judul: 'Anggur', deskripsi: 'Anggur adalah sebuah buah'},
+        {id: 7, judul: 'Sirsak', deskripsi: 'Sirsak adalah sebuah buah'},
+        {id: 8, judul: 'Durian', deskripsi: 'Durian adalah sebuah buah'},
+        {
+          id: 9,
+          judul: 'Kelengkeng',
+          deskripsi: 'Kelengkeng adalah sebuah buah',
+        },
+        {id: 10, judul: 'Pear', deskripsi: 'Pear adalah sebuah buah'},
+        {id: 11, judul: 'Semangka', deskripsi: 'Semangka adalah sebuah buah'},
+      ],
+      dataTampil: [
+        {id: 1, judul: 'Apel', deskripsi: 'Apel adalah sebuah buah'},
+        {id: 2, judul: 'Jeruk', deskripsi: 'Jeruk adalah sebuah buah'},
+        {id: 3, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
+        {id: 4, judul: 'Alpukat', deskripsi: 'Alpukat adalah sebuah buah'},
+        {id: 5, judul: 'Nanas', deskripsi: 'Nanas adalah sebuah buah'},
+        {id: 6, judul: 'Anggur', deskripsi: 'Anggur adalah sebuah buah'},
+        {id: 7, judul: 'Sirsak', deskripsi: 'Sirsak adalah sebuah buah'},
+        {id: 8, judul: 'Durian', deskripsi: 'Durian adalah sebuah buah'},
+        {
+          id: 9,
+          judul: 'Kelengkeng',
+          deskripsi: 'Kelengkeng adalah sebuah buah',
+        },
+        {id: 10, judul: 'Pear', deskripsi: 'Pear adalah sebuah buah'},
+        {id: 11, judul: 'Semangka', deskripsi: 'Semangka adalah sebuah buah'},
       ],
       pencarian: '',
     };
   }
+
+  pencarian = () => {
+    let data = this.state.data;
+
+    data = data.filter(item =>
+      item.judul.toLowerCase().includes(this.state.pencarian.toLowerCase()),
+    );
+
+    this.setState({dataTampil: data});
+  };
 
   render() {
     return (
@@ -62,10 +93,12 @@ class Home extends Component {
           }}
           placeholder="Cari disini"
           value={this.state.pencarian}
-          onChangeText={text => this.setState({pencarian: text})}></TextInput>
+          onChangeText={text =>
+            this.setState({pencarian: text}, () => this.pencarian())
+          }></TextInput>
 
         <FlatList
-          data={this.state.data}
+          data={this.state.dataTampil}
           keyExtractor={item => item.id}
           renderItem={({item, index}) => (
             <TouchableOpacity
