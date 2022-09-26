@@ -2,7 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, Text, StatusBar, TouchableOpacity} from 'react-native';
+import {View, Text, StatusBar, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 class Detail extends Component {

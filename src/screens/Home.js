@@ -10,13 +10,18 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [
-        {id: 1, judul: 'Apel', deskripsi: 'Apel adalah sebuah buah'},
+        {
+          id: 1,
+          judul: 'Apel',
+          deskripsi: 'Apel adalah sebuah buah',
+        },
         {id: 2, judul: 'Jeruk', deskripsi: 'Jeruk adalah sebuah buah'},
         {id: 3, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
         {id: 4, judul: 'Alpukat', deskripsi: 'Alpukat adalah sebuah buah'},
@@ -33,7 +38,11 @@ class Home extends Component {
         {id: 11, judul: 'Semangka', deskripsi: 'Semangka adalah sebuah buah'},
       ],
       dataTampil: [
-        {id: 1, judul: 'Apel', deskripsi: 'Apel adalah sebuah buah'},
+        {
+          id: 1,
+          judul: 'Apel',
+          deskripsi: 'Apel adalah sebuah buah',
+        },
         {id: 2, judul: 'Jeruk', deskripsi: 'Jeruk adalah sebuah buah'},
         {id: 3, judul: 'Mangga', deskripsi: 'Mangga adalah sebuah buah'},
         {id: 4, judul: 'Alpukat', deskripsi: 'Alpukat adalah sebuah buah'},
@@ -72,16 +81,29 @@ class Home extends Component {
             backgroundColor: '#2196f3',
             paddingVertical: 20,
             elevation: 3,
+            flexDirection: 'row',
+            paddingHorizontal: 20,
+            alignItems: 'center',
           }}>
-          <Text
-            style={{
-              color: 'white',
-              fontWeight: 'bold',
-              fontSize: 20,
-              textAlign: 'center',
-            }}>
-            KAMUS
-          </Text>
+          <View style={{flex: 1, alignItems: 'center'}}>
+            <Text
+              style={{
+                color: 'white',
+                fontWeight: 'bold',
+                fontSize: 20,
+              }}>
+              Home
+            </Text>
+          </View>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('About')}>
+            <Icon
+              style={{marginRight: 10}}
+              name="info-circle"
+              size={25}
+              color="#FFF"
+            />
+          </TouchableOpacity>
         </View>
 
         <TextInput
