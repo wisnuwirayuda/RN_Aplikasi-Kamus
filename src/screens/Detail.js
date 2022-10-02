@@ -2,7 +2,14 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, Text, StatusBar, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StatusBar,
+  TouchableOpacity,
+  Image,
+  Linking,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 class Detail extends Component {
@@ -43,6 +50,22 @@ class Detail extends Component {
           </Text>
         </View>
 
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL(
+              'https://id.wikipedia.org/wiki/' + this.props.route.params.judul,
+            )
+          }
+          style={{
+            marginTop: 30,
+            alignItems: 'center',
+            elevation: 3,
+          }}>
+          <Image
+            style={{width: 200, height: 200, borderRadius: 3}}
+            source={this.props.route.params.gambar}></Image>
+        </TouchableOpacity>
+
         <Text
           style={{
             textAlign: 'center',
@@ -50,15 +73,16 @@ class Detail extends Component {
             fontSize: 18,
             fontWeight: 'bold',
             marginTop: 25,
+            marginBottom: 10,
           }}>
           {this.props.route.params.judul}
         </Text>
         <Text
           style={{
-            textAlign: 'center',
+            textAlign: 'justify',
             color: 'white',
-            fontSize: 16,
-            fontWeight: 'bold',
+            fontSize: 14,
+            paddingHorizontal: 20,
           }}>
           {this.props.route.params.deskripsi}
         </Text>

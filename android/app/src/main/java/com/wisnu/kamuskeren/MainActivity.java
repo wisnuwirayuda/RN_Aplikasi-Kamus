@@ -1,4 +1,4 @@
-package com.kamuskeren;
+package com.wisnu.kamuskeren;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
